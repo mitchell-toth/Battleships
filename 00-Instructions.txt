@@ -1,0 +1,55 @@
+================================================================================
+Instructions for Setting up a Battleships AI for Testing or Contest
+December 2017
+================================================================================
+
+The easiest way to get set up is to change all "DumbPlayer" references to the
+C++ class name of your Battleships AI.
+
+--------------------------------------------------------------------------------
+Important Notes
+--------------------------------------------------------------------------------
+The safest is to compile the code on matt.cse.taylor.edu. Any other system could
+result in linker errors or strange behavior. If you do get unexpected crashes 
+that cannot be identified using gdb, it can be useful to do a "make clean" before
+"make testAI" or "make contest".
+
+The suggested way to test your AI is to make the necessary changes 
+(see Files To Change below), build the AI tester by typing "make testAI", and
+then run the tester by typing "./testAI". The contest will take place on a 10x10
+board with 500 rounds per match against the same opponent AI.
+
+Questions: Contact Stefan Brandle or someone who has participated in a Battleships
+AI contest previously.
+
+--------------------------------------------------------------------------------
+Most Important Files
+--------------------------------------------------------------------------------
+* tester.cpp: allows you to test your AI against your choice of one of the provided AIs.
+  Do a "make testAI" to build the binary. Run by typing "./testAI".
+  This option is best when working on testing your code strategy.
+
+* contest.cpp: allows you to run a full contest of your AI.
+  Do a "make contest" to build the binary. Run by typing "./contest".
+  This option
+
+* YOUR_AI.cpp/YOUR_AI.h: the code for your AI.
+
+--------------------------------------------------------------------------------
+Files To Change
+--------------------------------------------------------------------------------
+* DumbPlayer.cpp, DumbPlayer.h
+  Change all DumbPlayerV2 references to your class name. Be sure to change the
+  #ifndef DUMBPLAYERV2_H to be your class name (all CAPS) followed by _H
+
+* tester.cpp
+  Change all DumbPlayerV2 references to your class name. Scan for the pattern "Dumb".
+  - 3 places: the #include, the playerNames array, in getPlayer().
+
+* contest.cpp
+  Change all DumbPlayerV2 references to your class name. Scan for the pattern "Dumb".
+  - 3 places: the #include, the playerNames array, in getPlayer().
+
+* Makefile
+  Change all references to DumbPlayerV2 to whatever is appropriate for your player.
+
